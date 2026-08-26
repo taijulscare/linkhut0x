@@ -1,6 +1,0 @@
-{
-  "name": "Dynamic Content & Post Platform",
-  "description": "A dynamic content and post publishing platform with category navigation, customizable ad reward steps for download unlocks, search, likes, views, and an admin management dashboard powered by Firebase.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
