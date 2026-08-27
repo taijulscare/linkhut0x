@@ -125,28 +125,28 @@ export const Header: React.FC<HeaderProps> = ({ currentView, onNavigate }) => {
             className="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-2"
           >
             <Home className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
-            <span>Public Home</span>
+            <spanHome</span>
           </button>
 
           {isAdmin ? (
             <button
               id="mobile-nav-admin"
               type="button"
-              onClick={() => { onNavigate('admin'); setMobileMenuOpen(false); }}
+              onClick={() => { onNavigate('/'); setMobileMenuOpen(false); }}
               className="w-full text-left px-3 py-2 rounded-lg text-sm font-semibold text-indigo-700 dark:text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 flex items-center gap-2"
             >
               <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-              <span>Admin Console</span>
+              <span>InnoAlbums</span>
             </button>
           ) : (
             <button
               id="mobile-nav-login"
               type="button"
-              onClick={() => { onNavigate('admin-login'); setMobileMenuOpen(false); }}
+              onClick={() => { onNavigate('/'); setMobileMenuOpen(false); }}
               className="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-2"
             >
               <Lock className="w-4 h-4 text-slate-500 dark:text-slate-400" />
-              <span>Admin Portal Login</span>
+              <span>Collections</span>
             </button>
           )}
         </div>
