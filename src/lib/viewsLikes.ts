@@ -17,7 +17,7 @@ import { db } from './firebase';
 const VIEW_THROTTLE_MS = 60 * 60 * 1000; // 1 hour per post view count per visitor
 
 /**
- * Increment view count with client-side deduplication throttle to avoid spamming Firestore writes
+ * Increment view count with client-side deduplication throttle to avoid spamming Firestore writes - if needs
  */
 /* export async function recordPostView(postId: string): Promise<boolean> {
   if (typeof window === 'undefined') return false;
