@@ -10,6 +10,8 @@ import { Header } from './components/common/Header';
 import { PublicPortalHome } from './components/home/PublicPortalHome';
 import { AdminLogin } from './components/admin/AdminLogin';
 import { AdminLayout } from './components/admin/AdminLayout';
+// utils/formatters.ts থেকে formatTitle ইমপোর্ট করা হয়েছে
+import { formatTitle } from './utils/formatters';
 
 // TypeScript declaration for Telegram WebApp
 declare global {
@@ -54,39 +56,11 @@ function MainApp() {
     }
   };
 
-
-
-export const formatTitle = (param: string): string => {
-  if (!param) return '';
-
-  let text = param;
-  let hasExtraCode = false;
-
-  const cleanedText = text.replace(/([-_]?[a-zA-Z]*\d+[a-zA-Z0-9]*)$/, '');
-
-
-  if (cleanedText !== text) {
-    text = cleanedText;
-    hasExtraCode = true;
-  }
-
-  let formatted = text
-    .replace(/([a-z])([A-Z])/g, '$1 $2')
-    .replace(/[-_]+/g, ' ')              
-    .trim()
-    .split(/\s+/)
-    .filter(Boolean)
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-    .join(' ');
-
-  return hasExtraCode ? `${formatted}...` : formatted;
-};
   // ==========================================
   // TELEGRAM MINI APP START_PARAM DETECT & POPUP
   // ==========================================
   useEffect(() => {
     const webApp = window.Telegram?.WebApp;
-    
 
     if (webApp) {
       webApp.ready();
@@ -94,11 +68,11 @@ export const formatTitle = (param: string): string => {
 
       // URL parameters (startapp query) extract kora
       const startParam = webApp.initDataUnsafe?.start_param;
-      
 
       if (startParam) {
         // Native Telegram Popup Trigger
-        const cleanTitle = formatTitle(startParam);
+        const cleanTitle = formatTitle(startParam) || 'Content Details';
+        
         webApp.showPopup(
           {
             title: `📌 ${cleanTitle}`,
@@ -110,7 +84,7 @@ export const formatTitle = (param: string): string => {
           },
           (buttonId: string) => {
             if (buttonId === 'view_content') {
-              // 'View content' click korle post routing hobe (#/post/EBD62696)
+              // 'View content' click korle post routing hobe
               handleSelectPostSlug(startParam);
             }
           }
@@ -193,7 +167,7 @@ export const formatTitle = (param: string): string => {
             <div className="flex items-center gap-4 text-slate-500 dark:text-slate-400">
               <button 
                 type="button" 
-                onClick={() => handleNavigate('/dmca.html')}
+                onClick={() => handleNavigate('home')}
                 className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
               >
                App Access
